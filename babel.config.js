@@ -1,7 +1,7 @@
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
   plugins: [
-    ['nativewind/babel'],
+    'nativewind/babel',
     [
       'module-resolver',
       {
@@ -26,8 +26,7 @@ module.exports = {
           '@shared': './src/shared'
         }
       }
-    ]
-
-    // ... other configs, if any
+    ],
+    'react-native-reanimated/plugin'
   ]
 }

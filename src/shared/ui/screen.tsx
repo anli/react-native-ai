@@ -1,6 +1,19 @@
 import React, { FC } from 'react'
-import { SafeAreaView, SafeAreaViewProps } from 'react-native-safe-area-context'
+import {
+  SafeAreaView,
+  SafeAreaViewProps,
+  useSafeAreaInsets
+} from 'react-native-safe-area-context'
 
 export const Screen: FC<SafeAreaViewProps> = props => {
-  return <SafeAreaView {...props} />
+  const { top } = useSafeAreaInsets()
+  const { style, ...rest } = props
+
+  return (
+    <SafeAreaView
+      edges={['bottom']}
+      style={[...(style as any), { paddingTop: top }]}
+      {...rest}
+    />
+  )
 }
