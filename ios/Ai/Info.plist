@@ -51,5 +51,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSMicrophoneUsageDescription</key>
+  <string>Allow $(PRODUCT_NAME) to access the microphone</string>
+  <key>NSSpeechRecognitionUsageDescription</key>
+  <string>Allow $(PRODUCT_NAME) to securely recognize user speech</string>
 </dict>
 </plist>
