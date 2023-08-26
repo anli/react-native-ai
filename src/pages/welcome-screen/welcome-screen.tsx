@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { View } from 'react-native'
-import { Button, Screen, AnimatedImage, Text } from '@shared'
+import { Button, Screen, AnimatedImage, Text } from '@shared/ui'
 
 export const WelcomeScreen = () => {
   const { navigate } = useNavigation()

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, Image, Pressable, View } from 'react-native'
-import { Screen, AnimatedImage, Text } from '@shared'
+import { Screen, AnimatedImage, Text } from '@shared/ui'
 import Voice from '@react-native-voice/voice'
+import { OpenAi } from '@shared/api'
 
 export const HomeScreen = () => {
   return (
@@ -24,6 +25,7 @@ export const HomeScreen = () => {
 }
 
 const ActionButtons = () => {
+  const { mutateAsync: getChatCompletions } = OpenAi.useChatCompletions()
   const [loading, setLoading] = useState(false)
   const { recording, start: voiceStart, stop: voiceStop, result } = useVoice()
   const state = loading ? 'LOADING' : recording ? 'RECORDING' : 'NONE'
@@ -36,7 +38,8 @@ const ActionButtons = () => {
     try {
       setLoading(true)
       await voiceStop()
-      await new Promise(resolve => setTimeout(() => resolve(null), 3000))
+      const res = await getChatCompletions([{ role: 'user', content: result }])
+      console.log({ res })
     } catch (error) {
       console.log('handleStopRecording', error)
     } finally {
